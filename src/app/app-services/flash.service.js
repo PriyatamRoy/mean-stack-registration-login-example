@@ -9,7 +9,7 @@
         var service = {};
 
         service.Success = Success;
-        service.Error = Error;
+        service.Error = Err;
 
         initService();
 
@@ -41,7 +41,7 @@
             };
         }
 
-        function Error(message, keepAfterLocationChange) {
+        function Err(message, keepAfterLocationChange) {
             $rootScope.flash = {
                 message: message,
                 type: 'danger',

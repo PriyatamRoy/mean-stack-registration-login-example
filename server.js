@@ -7,7 +7,7 @@ var expressJwt = require('express-jwt');
 var config = require('config.json');
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/src/views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
@@ -16,10 +16,10 @@ app.use(session({ secret: config.secret, resave: false, saveUninitialized: true 
 app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
 
 // routes
-app.use('/login', require('./controllers/login.controller'));
-app.use('/register', require('./controllers/register.controller'));
-app.use('/app', require('./controllers/app.controller'));
-app.use('/api/users', require('./controllers/api/users.controller'));
+app.use('/login', require('./src/controllers/login.controller'));
+app.use('/register', require('./src/controllers/register.controller'));
+app.use('/app', require('./src/controllers/app.controller'));
+app.use('/api/users', require('./src/controllers/api/users.controller'));
 
 // make '/app' default route
 app.get('/', function (req, res) {
